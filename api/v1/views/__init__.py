@@ -3,10 +3,12 @@
 from flask import Blueprint
 
 app_views = Blueprint('app_views', __name__, url_prefix="/api/v1")
+<<<<<<< HEAD
 from api.v1.views.index import *
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> fd28931a0ae5c832736c1264b99dd4a7f3392cca
 
 from api.v1.views.index import *
 from api.v1.views.states import *
->>>>>>> b70585dfc3fe3954257fccd8178af95c8d5c47ce
