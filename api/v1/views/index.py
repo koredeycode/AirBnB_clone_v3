@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""the index for the app view"""
 from api.v1.views import app_views
 from flask import jsonify
 from models.amenity import Amenity
