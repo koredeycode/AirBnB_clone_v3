@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """The app module. It runs the application"""
 from flask import Flask, jsonify, make_response
+from flask_cors import CORS
 from api.v1.views import app_views
 from models import storage
 from os import getenv
@@ -8,6 +9,7 @@ from os import getenv
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 app.register_blueprint(app_views)
+cors = CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
 
 
 @app.teardown_appcontext

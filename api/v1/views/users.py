@@ -14,21 +14,21 @@ def get_users():
     return (jsonify(users))
 
 
-@app_views.route("/users/<string:id>", methods=['GET'],
+@app_views.route("/users/<user_id>", methods=['GET'],
                  strict_slashes=False)
-def get_user(id=None):
+def get_user(user_id=None):
     """return info about a user object"""
-    user = storage.get(User, id)
+    user = storage.get(User, user_id)
     if not user:
         abort(404)
     return make_response(jsonify(user.to_dict()), 200)
 
 
-@app_views.route("/users/<string:id>", methods=['DELETE'],
+@app_views.route("/users/<user_id>", methods=['DELETE'],
                  strict_slashes=False)
-def delete_user(id=None):
+def delete_user(user_id=None):
     """delete a user object"""
-    user = storage.get(User, id)
+    user = storage.get(User, user_id)
     if not user:
         abort(404)
     storage.delete(user)
@@ -37,7 +37,7 @@ def delete_user(id=None):
 
 
 @app_views.route("/users/", methods=['POST'], strict_slashes=False)
-def create_user(id=None):
+def create_user():
     """create a user object"""
     data = request.get_json()
     if not data:
@@ -53,11 +53,11 @@ def create_user(id=None):
     return make_response(jsonify(user.to_dict()), 201)
 
 
-@app_views.route("/users/<string:id>", methods=['PUT'],
+@app_views.route("/users/<user_id>", methods=['PUT'],
                  strict_slashes=False)
-def update_user(id=None):
+def update_user(user_id=None):
     """update the user object"""
-    user = storage.get(User, id)
+    user = storage.get(User, user_id)
 
     if not user:
         abort(404)
